@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/screen.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/lightbox.css">
+
+    <script src="static/js/jquery-1.11.0.min.js"></script>
+    <script src="static/js/lightbox.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <p>
+        {% if comment %}
+        {{ comment }}
+        {% endif %}
+        </p>
+    <header>
+        <p>Welcome to XIURISTA's world!</p>
+        <div class="h2">
+        <h2>WRITE</h2>
+        <h2>SOMETHING</h2>
+        <h2>FRESH</h2>
+    </div>
+
+
+
+        <form action="{{ url_for("upload_db") }}" enctype="multipart/form-data" method="POST">
+          <!--  <input type="file" name="photo">
+            <input type="submit" value="submit">-->
+            
+            <textarea id="article" class="form-control" rows="3" name="memo"></textarea><br><br>
+            <p><input type="file" name="photo">        
+            <input type="submit" value="summit" class="btn btn-lg btn-info mytwit"></p>
+        </form>
+
+        <br><br>
+        
+        <div class="image-row">
+            <div class="image-set">
+
+                {% for items in all_list %}
+                <a class="example-image-link" href="show/{{ items.key() }}" data-lightbox="example-set"><img class="example-image" src="show/{{ items.key() }}" alt=""></a>
+
+                <div class="twit-text">
+                <p>{{ items.memo }}</p>
+
+                
+
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
